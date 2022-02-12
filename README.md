@@ -1,24 +1,24 @@
-# todo
+# ToDo
 
-## Project setup
-```
-npm install
-```
+vue toy project_TodoList
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### View
 
-### Compiles and minifies for production
-```
-npm run build
-```
+- Vue with Javascript
 
-### Lints and fixes files
-```
-npm run lint
-```
+### CSS-in-JS
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- styled-component
+
+### State Management
+
+- Vuex
+
+### Code Quality Tool
+
+- ESLint, Prettier
+
+### VCS
+
+- Git, Github
+
