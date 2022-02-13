@@ -1,12 +1,13 @@
 <template>
     <div class="inputBox">
-      <input type="text">
-      <span class="addContainer" >
+      <input type="text"  v-on:keyup.enter="addTodo">
+      <span class="addContainer" v-on:click="addTodo">
           <i class="fas fa-plus addBtn"></i>
       </span>
       <Modal v-if="showModal" @close="showModal = false">
           <h3 v-bind="header">
-              경고 <i class="fas fa-times closeModalBtn" @click="showModal = false"></i>
+              경고 
+              <i class="fas fa-times closeModalBtn" @click="showModal=false"></i>
           </h3>
             <div :v-bind="body">무언가를 입력하세요</div>
       </Modal>
@@ -25,10 +26,23 @@ export default {
 
   data() {
       return {
+        newTodoItem:'',
         showModal: false
       }
   },
-
+  methods: {
+      addTodo() {
+        if(this.newTodoItem !== ''){
+            this.$emit('addTodoItem', this.newTodoItem)
+            this.clearInput();
+        } else {
+           this.showModal = !this.showModal; 
+        }  
+      },
+      clearInput() {
+          this.newTodoItem = '';
+      }
+  },
   components:{ Modal }  
 }
 </script>
