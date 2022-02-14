@@ -1,8 +1,10 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">  
   <TodoHeader></TodoHeader>
-  <TodoInput></TodoInput>
-  <TodoList></TodoList>
+  <TodoInput @addTodo='addTodo'></TodoInput>
+  <TodoList 
+  :todoList='todoList'
+  @statusControl='statusControl'></TodoList>
   <TodoFooter></TodoFooter>
 </template>
 
@@ -13,7 +15,21 @@ import TodoList from './components/TodoList.vue'
 import TodoFooter from './components/TodoFooter.vue'
 
 export default {
-
+  data() {
+    return {
+      todoList: [],
+    }
+  },
+  methods:{
+    addTodo(memo) {
+      console.log('받았어')
+      this.todoList.push({memo: memo, status: 'created'})
+    },
+    statusControl(index, status){
+      this.todoList[index].status = status
+    },
+    
+  },
   components: {
     TodoHeader,
     TodoInput,
@@ -22,6 +38,9 @@ export default {
   }
 }
 </script>
+
+
+
 
 <style>
 body {

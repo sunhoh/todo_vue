@@ -1,9 +1,27 @@
 <template>
   <div>
     <transition-group name="list" tag="ul">
-      <li >
-        <i class="fas fa-check checkBtn"></i>
-        <span>{{ todoItem.item }}</span>
+      <li 
+        v-for="(list, index) in todoList" 
+        :key="index" 
+        v-bind:class="{done: list.status === 'done'}"
+      >
+        <!-- //완료 -->
+          <i 
+          v-if="list.status === 'created'"
+          class="fas fa-check checkBtn" 
+          @click="$emit('statusControl', index, 'done')" />
+          
+        <!-- //부활 -->
+          <i
+          v-else
+          class="fas fa-redo-alt checkBtn" 
+          @click="$emit('statusControl', index, 'created')"/>
+  
+        <!-- //리스트 -->
+        <span>{{list.memo}}</span>
+        
+        <!-- //삭제 -->
         <span class="removeBtn">
           <i class="fas fa-trash-alt"></i>
         </span>
@@ -14,7 +32,7 @@
 
 <script>
 export default {
-    
+    props:['todoList','toggle'],
 }
 </script>
 
@@ -37,11 +55,20 @@ li {
 }
 
 .checkBtn {
-  line-height: 45px;
+  padding:5px;
+  line-height: 40px;
   color: #62acde;
   margin-right: 5px;
+  cursor: pointer;
 }
 
+.done {
+  background: rgba(0, 0, 0, 0.1);
+}
+.done span{
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.5);
+}
 
 
 .removeBtn {

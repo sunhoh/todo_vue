@@ -1,21 +1,17 @@
 <template>
     <div class="inputBox">
-      <input type="text"  v-on:keyup.enter="addTodo">
-      <span class="addContainer" v-on:click="addTodo">
+      <!-- // 인풋 -->
+      <input type="text" v-model="memo" />
+      <!-- //추가버튼 -->
+      <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
       </span>
-      <Modal v-if="showModal" @close="showModal = false">
-          <h3 v-bind="header">
-              경고 
-              <i class="fas fa-times closeModalBtn" @click="showModal=false"></i>
-          </h3>
-            <div :v-bind="body">무언가를 입력하세요</div>
-      </Modal>
+      
     </div>
 </template>
 
 <script>
-import Modal from './common/Modal.vue'
+// import Modal from './common/Modal.vue'
 
 export default {
   props: {
@@ -26,26 +22,33 @@ export default {
 
   data() {
       return {
+        memo:null,
+
         newTodoItem:'',
         showModal: false
       }
   },
   methods: {
       addTodo() {
-        if(this.newTodoItem !== ''){
-            this.$emit('addTodoItem', this.newTodoItem)
-            this.clearInput();
-        } else {
-           this.showModal = !this.showModal; 
-        }  
+       console.log('리스트 추가')
+       if(this.memo === ''){
+        alert('할일 입력 바람')
+       }else {
+        this.$emit('addTodo', this.memo)
+       }
+
       },
-      clearInput() {
-          this.newTodoItem = '';
-      }
+      
   },
-  components:{ Modal }  
+  // components:{ Modal }  
 }
 </script>
+
+
+
+
+
+
 
 <style scoped>
 input:focus {

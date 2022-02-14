@@ -5,11 +5,7 @@
 </template>
 
 
-
-
-
 <style scoped>
-
 .clearAllContainer{
   width: 8.5rem;
   height: 50px;
@@ -23,5 +19,4 @@
   color: #e20303;
   display: block;
 }
-
 </style>
