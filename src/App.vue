@@ -1,10 +1,11 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">  
   <TodoHeader></TodoHeader>
-  <TodoInput @addTodo='addTodo'></TodoInput>
+  <TodoInput @addTodo='addTodo' /> 
   <TodoList 
   :todoList='todoList'
-  @statusControl='statusControl'></TodoList>
+  @statusControl='statusControl'
+  @listDelete='listDelete' />
   <TodoFooter></TodoFooter>
 </template>
 
@@ -21,13 +22,15 @@ export default {
     }
   },
   methods:{
-    addTodo(memo) {
-      console.log('받았어')
-      this.todoList.push({memo: memo, status: 'created'})
+    addTodo(todo) {
+      this.todoList.push({todo: todo, status: 'created'})
     },
     statusControl(index, status){
       this.todoList[index].status = status
     },
+    listDelete(index){
+      this.todoList.splice(index, 1)
+    }
     
   },
   components: {
@@ -51,10 +54,7 @@ input {
   border-style: groove;
   width: 200px;
 }
-button {
-  border-style: groove;
-}
-.shadow {
-  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03);
-}
+button { border-style: groove; }
+
+.shadow { box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03); }
 </style>

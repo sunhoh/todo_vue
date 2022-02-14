@@ -18,11 +18,13 @@
           class="fas fa-redo-alt checkBtn" 
           @click="$emit('statusControl', index, 'created')"/>
   
-        <!-- //리스트 -->
-        <span>{{list.memo}}</span>
-        
+        <!-- 리스트 -->
+        <span>{{list.todo}}</span>
+
         <!-- //삭제 -->
-        <span class="removeBtn">
+        <span 
+          class="removeBtn"
+          @click="$emit('listDelete', index)">
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
@@ -32,7 +34,7 @@
 
 <script>
 export default {
-    props:['todoList','toggle'],
+    props:['todoList'],
 }
 </script>
 
@@ -74,6 +76,7 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+  cursor: pointer;
 }
 
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="inputBox">
       <!-- // 인풋 -->
-      <input type="text" v-model="memo" />
+      <input type="text" v-model="todo" />
       <!-- //추가버튼 -->
       <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
@@ -11,30 +11,26 @@
 </template>
 
 <script>
-// import Modal from './common/Modal.vue'
 
 export default {
   props: {
-	header: String,
+    header: String,
     body: String,
-	// default: 'props를 안내려줘도 이 값이 뜸'
   },
 
   data() {
       return {
-        memo:null,
-
-        newTodoItem:'',
-        showModal: false
+        todo:null,
       }
   },
   methods: {
       addTodo() {
        console.log('리스트 추가')
-       if(this.memo === ''){
+
+       if(this.todo === ''){
         alert('할일 입력 바람')
        }else {
-        this.$emit('addTodo', this.memo)
+        this.$emit('addTodo', this.todo)
        }
 
       },
