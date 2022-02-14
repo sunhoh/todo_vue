@@ -1,7 +1,11 @@
 <template>
     <div class="inputBox">
       <!-- // 인풋 -->
-      <input type="text" v-model="todo" />
+      <input 
+        type="text" 
+        v-model="todo" 
+        @keyup.enter="addTodo"
+      />
       <!-- //추가버튼 -->
       <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
@@ -20,38 +24,28 @@ export default {
 
   data() {
       return {
-        todo:null,
+        todo: '',
       }
   },
   methods: {
       addTodo() {
-       console.log('리스트 추가')
-
        if(this.todo === ''){
         alert('할일 입력 바람')
        }else {
         this.$emit('addTodo', this.todo)
+        this.todo =''
        }
-
       },
-      
   },
   // components:{ Modal }  
 }
 </script>
-
-
-
-
-
-
 
 <style scoped>
 input:focus {
  outline: none;   
 }
 .inputBox {
-    
   background: white;
   height: 50px;
   line-height: 50px;

@@ -1,9 +1,22 @@
 <template>
     <div class="clearAllContainer">
-        <span class="clearAllBtn"> Clear All </span>
+        <span class="clearAllBtn"
+          @click="clearTodo">
+          Clear All 
+         </span>
     </div>
 </template>
 
+<script>
+export default {
+  methods:{
+    clearTodo(){
+      this.$emit('clearAll');
+    }
+  }
+
+}
+</script>
 
 <style scoped>
 .clearAllContainer{
@@ -13,6 +26,7 @@
   background-color: white;
   border-radius: 5px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 .clearAllBtn {

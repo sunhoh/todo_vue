@@ -4,7 +4,7 @@
       <li 
         v-for="(list, index) in todoList" 
         :key="index" 
-        v-bind:class="{done: list.status === 'done'}"
+        :class="{done: list.status === 'done'}"
       >
         <!-- //완료 -->
           <i 

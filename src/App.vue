@@ -3,10 +3,11 @@
   <TodoHeader></TodoHeader>
   <TodoInput @addTodo='addTodo' /> 
   <TodoList 
-  :todoList='todoList'
-  @statusControl='statusControl'
-  @listDelete='listDelete' />
-  <TodoFooter></TodoFooter>
+    :todoList='todoList'
+    @statusControl='statusControl'
+    @listDelete='listDelete' />
+  <TodoFooter 
+    @clearAll='clearAll' />
 </template>
 
 <script>
@@ -30,6 +31,9 @@ export default {
     },
     listDelete(index){
       this.todoList.splice(index, 1)
+    },
+    clearAll(){
+      this.todoList = [];
     }
     
   },
