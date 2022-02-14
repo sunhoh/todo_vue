@@ -22,10 +22,10 @@
         <span>{{list.todo}}</span>
 
         <!-- //삭제 -->
-        <span 
-          class="removeBtn"
-          @click="$emit('listDelete', index)">
-          <i class="fas fa-trash-alt"></i>
+        <span class="removeBtn" >
+          <i 
+            class="fas fa-trash-alt "
+            @click="$emit('listDelete', index)" />
         </span>
       </li>
     </transition-group>
@@ -64,6 +64,13 @@ li {
   cursor: pointer;
 }
 
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+  cursor: pointer;
+  /* border:1px solid black; */
+}
+
 .done {
   background: rgba(0, 0, 0, 0.1);
 }
@@ -72,11 +79,15 @@ li {
   color: rgba(0, 0, 0, 0.5);
 }
 
-
-.removeBtn {
-  margin-left: auto;
-  color: #de4343;
-  cursor: pointer;
+/* 리스트 아이템 트렌지션 효과 */
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.5s ease;
 }
+.list-enter-from, .list-leave-to  {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
 
 </style>

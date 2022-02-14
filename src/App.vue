@@ -1,13 +1,15 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">  
-  <TodoHeader></TodoHeader>
-  <TodoInput @addTodo='addTodo' /> 
-  <TodoList 
-    :todoList='todoList'
-    @statusControl='statusControl'
-    @listDelete='listDelete' />
-  <TodoFooter 
-    @clearAll='clearAll' />
+  <div class="container">
+    <img alt="Vue logo" src="./assets/logo.png">  
+    <TodoHeader></TodoHeader>
+    <TodoInput @addTodo='addTodo' /> 
+    <TodoList 
+      :todoList='todoList'
+      @statusControl='statusControl'
+      @listDelete='listDelete' />
+    <TodoFooter 
+      @clearAll='clearAll' />
+  </div>
 </template>
 
 <script>
@@ -23,19 +25,13 @@ export default {
     }
   },
   methods:{
-    addTodo(todo) {
-      this.todoList.push({todo: todo, status: 'created'})
-    },
-    statusControl(index, status){
-      this.todoList[index].status = status
-    },
-    listDelete(index){
-      this.todoList.splice(index, 1)
-    },
-    clearAll(){
-      this.todoList = [];
-    }
-    
+    addTodo(todo) { this.todoList.push({todo: todo, status: 'created'}) },
+
+    statusControl(index, status){ this.todoList[index].status = status },
+
+    listDelete(index){ this.todoList.splice(index, 1) },
+
+    clearAll(){ this.todoList = [] }
   },
   components: {
     TodoHeader,
@@ -46,17 +42,18 @@ export default {
 }
 </script>
 
-
-
-
 <style>
 body {
-  text-align: center;
   background-color: #f6f6f6;
+}
+.container {
+  margin: 0 auto;
+  max-width: 50rem;
+  text-align: center;
 }
 input {
   border-style: groove;
-  width: 200px;
+  border:1px solid black;
 }
 button { border-style: groove; }
 

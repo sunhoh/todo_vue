@@ -10,7 +10,6 @@
       <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
       </span>
-      
     </div>
 </template>
 
@@ -29,15 +28,11 @@ export default {
   },
   methods: {
       addTodo() {
-       if(this.todo === ''){
-        alert('할일 입력 바람')
-       }else {
-        this.$emit('addTodo', this.todo)
-        this.todo =''
-       }
+      this.todo !== ''  
+      && this.$emit('addTodo', this.todo)
+         this.todo =''
       },
   },
-  // components:{ Modal }  
 }
 </script>
 
@@ -52,8 +47,11 @@ input:focus {
   border-radius: 5px;
 }
 .inputBox input {
+  width: 50%;
+  padding: 10px;
   border-style: none;
   font-size: 0.9rem;
+  
 }
 
 .addContainer {

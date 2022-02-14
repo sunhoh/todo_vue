@@ -1,9 +1,11 @@
 <template>
     <div class="clearAllContainer">
-        <span class="clearAllBtn"
-          @click="clearTodo">
-          Clear All 
-         </span>
+      <span 
+        class="clearAllBtn"
+        @click="clearTodo"
+      >
+        Clear All 
+      </span>
     </div>
 </template>
 
@@ -29,8 +31,5 @@ export default {
   cursor: pointer;
 }
 
-.clearAllBtn {
-  color: #e20303;
-  display: block;
-}
+
 </style>
