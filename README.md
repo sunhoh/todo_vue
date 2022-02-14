@@ -6,10 +6,6 @@ vue toy project_TodoList
 
 - Vue with Javascript
 
-### CSS-in-JS
-
-- styled-component
-
 ### State Management
 
 - Vuex
@@ -21,4 +17,8 @@ vue toy project_TodoList
 ### VCS
 
 - Git, Github
+
+### Other Framework
+
+- Font awesome
 
