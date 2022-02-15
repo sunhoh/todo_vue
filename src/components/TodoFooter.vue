@@ -30,6 +30,8 @@ export default {
   margin: 0 auto;
   cursor: pointer;
 }
-
+.clearAllBtn {
+  color: red
+}
 
 </style>

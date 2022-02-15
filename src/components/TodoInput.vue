@@ -35,7 +35,7 @@ export default {
   },
   methods: {
       addTodo() {
-      if(this.value !== ''  ){
+      if(this.value !== ''){
         this.$emit('addTodo', this.value)
         this.value =''
       } else {
@@ -62,6 +62,7 @@ input:focus {
   padding: 10px;
   border-style: none;
   font-size: 0.9rem;
+  
 }
 
 .addContainer {
@@ -77,6 +78,7 @@ input:focus {
   color: white;
   vertical-align: middle;
 }
+
 .closeModalBtn {
   color: #42b983;
   cursor: pointer;

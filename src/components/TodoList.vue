@@ -18,16 +18,20 @@
           class="fas fa-redo-alt checkBtn" 
           @click="$emit('statusControl', index, 'created')"/>
   
-
         <!-- 리스트 -->
         <span>{{list.todo}}</span>
 
-        <!-- //삭제 -->
-        <span class="removeBtn" >
+
+        <!-- //수정 || 삭제 -->
+        <span class='editOrremoveBtn'>
+          <!-- //수정 -->
+          <i class="fas fa-edit" />
+          <!-- //삭제 -->
           <i 
             class="fas fa-trash-alt "
             @click="$emit('listDelete', index)" />
         </span>
+        
       </li>
     </transition-group>
   </div>
@@ -48,6 +52,7 @@ ul {
 }
 li {
   display: flex;
+  justify-content: space-between;
   min-height: 50px;
   height: 50px;
   line-height: 50px;
@@ -65,11 +70,17 @@ li {
   cursor: pointer;
 }
 
-.removeBtn {
-  margin-left: auto;
+.editOrremoveBtn {
+  padding:0 5px 0 5px;
+}
+.editOrremoveBtn i:nth-child(1) {
+  color: #35495e;
+  cursor: pointer;
+}
+.editOrremoveBtn i:nth-child(2) {
+  margin-left: 10px;
   color: #de4343;
   cursor: pointer;
-  /* border:1px solid black; */
 }
 
 .done {
@@ -89,6 +100,4 @@ li {
   opacity: 0;
   transform: translateY(30px);
 }
-
-
 </style>

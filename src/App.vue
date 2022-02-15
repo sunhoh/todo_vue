@@ -4,7 +4,6 @@
     <TodoHeader />
     <TodoInput 
       @addTodo='addTodo' 
-      :todoList='todoList'
     /> 
     <TodoList 
       :todoList='todoList'
@@ -28,9 +27,7 @@ export default {
     }
   },
   methods:{
-    addTodo(todo) { 
-      this.todoList.push({todo: todo, status: 'created', seleted: false})
-       },
+    addTodo(todo) { this.todoList.push({todo: todo, status: 'created'})  },
 
     statusControl(index, status){ this.todoList[index].status = status },
 
