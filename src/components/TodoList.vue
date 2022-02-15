@@ -18,6 +18,7 @@
           class="fas fa-redo-alt checkBtn" 
           @click="$emit('statusControl', index, 'created')"/>
   
+
         <!-- 리스트 -->
         <span>{{list.todo}}</span>
 

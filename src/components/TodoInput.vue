@@ -3,36 +3,47 @@
       <!-- // 인풋 -->
       <input 
         type="text" 
-        v-model="todo" 
+        v-model="value" 
         @keyup.enter="addTodo"
       />
       <!-- //추가버튼 -->
       <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
       </span>
+      <Modal v-if="showModal" >
+        <template v-slot:header> 
+          <h3>경고 
+            <i class="fas fa-times closeModalBtn" @click="showModal=false"/>
+          </h3>
+        </template>
+        <template v-slot:body>
+          <div>무언가를 입력하세요!</div>
+        </template>
+      </Modal>
     </div>
 </template>
 
 <script>
+import Modal from './common/Modal.vue'
 
 export default {
-  props: {
-    header: String,
-    body: String,
-  },
-
   data() {
       return {
-        todo: '',
+        value: '',
+        showModal:false,
       }
   },
   methods: {
       addTodo() {
-      this.todo !== ''  
-      && this.$emit('addTodo', this.todo)
-         this.todo =''
-      },
+      if(this.value !== ''  ){
+        this.$emit('addTodo', this.value)
+        this.value =''
+      } else {
+        this.showModal = !this.showModal;
+      }
+    },
   },
+  components: { Modal }
 }
 </script>
 
@@ -51,7 +62,6 @@ input:focus {
   padding: 10px;
   border-style: none;
   font-size: 0.9rem;
-  
 }
 
 .addContainer {
@@ -67,8 +77,8 @@ input:focus {
   color: white;
   vertical-align: middle;
 }
-
 .closeModalBtn {
   color: #42b983;
+  cursor: pointer;
 }
 </style>

@@ -1,8 +1,11 @@
 <template>
   <div class="container">
     <img alt="Vue logo" src="./assets/logo.png">  
-    <TodoHeader></TodoHeader>
-    <TodoInput @addTodo='addTodo' /> 
+    <TodoHeader />
+    <TodoInput 
+      @addTodo='addTodo' 
+      :todoList='todoList'
+    /> 
     <TodoList 
       :todoList='todoList'
       @statusControl='statusControl'
@@ -25,7 +28,9 @@ export default {
     }
   },
   methods:{
-    addTodo(todo) { this.todoList.push({todo: todo, status: 'created'}) },
+    addTodo(todo) { 
+      this.todoList.push({todo: todo, status: 'created', seleted: false})
+       },
 
     statusControl(index, status){ this.todoList[index].status = status },
 
@@ -59,3 +64,5 @@ button { border-style: groove; }
 
 .shadow { box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.03); }
 </style>
+
+
