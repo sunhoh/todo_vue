@@ -21,25 +21,35 @@
         <!-- 리스트 -->
         <span>{{list.todo}}</span>
 
-
         <!-- //수정 || 삭제 -->
         <span class='editOrremoveBtn'>
           <!-- //수정 -->
-          <i class="fas fa-edit" />
+          <i 
+            v-if="list.status ==='created'"
+            class="fas fa-edit" 
+          />
           <!-- //삭제 -->
           <i 
             class="fas fa-trash-alt "
             @click="$emit('listDelete', index)" />
-        </span>
-        
+        </span>        
       </li>
     </transition-group>
   </div>
 </template>
 
 <script>
+// import { eventBus } from '../main'
+
 export default {
     props:['todoList'],
+    // methods: {
+    //   //state함수
+    //   listEdit(memo, index){
+    //     //부모에서 가져온 함수
+    //     eventBus.listEdit(memo, index)
+    //   }
+    // }
 }
 </script>
 

@@ -10,7 +10,7 @@
       <span class="addContainer" @click="addTodo">
           <i class="fas fa-plus addBtn"></i>
       </span>
-      <Modal v-if="showModal" >
+      <Modal v-if="showModal">
         <template v-slot:header> 
           <h3>경고 
             <i class="fas fa-times closeModalBtn" @click="showModal=false"/>
@@ -25,6 +25,7 @@
 
 <script>
 import Modal from './common/Modal.vue'
+// import { eventBus } from '../main'
 
 export default {
   data() {
@@ -33,6 +34,11 @@ export default {
         showModal:false,
       }
   },
+  // created(){
+  //   eventBus.$on('listEdit', (memo,index)=>{
+  //     console.log(memo,index)
+  //   })
+  // },
   methods: {
       addTodo() {
       if(this.value !== ''){
